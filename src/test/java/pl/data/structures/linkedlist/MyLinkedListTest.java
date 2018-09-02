@@ -64,4 +64,40 @@ public class MyLinkedListTest {
         linkedList.add(3, 1);
         assertThat(linkedList.toString()).isEqualTo("[1, 3, 2]");
     }
+
+    @Test
+    public void delete(){
+        MyLinkedList<Integer> linkedList = new MyLinkedList<>();
+        linkedList.add(1);
+        linkedList.add(2);
+        linkedList.add(3);
+
+        linkedList.remove(1);
+
+        assertThat(linkedList.toString()).isEqualTo("[1, 3]");
+    }
+
+    @Test
+    public void deleteFirst(){
+        MyLinkedList<Integer> linkedList = new MyLinkedList<>();
+        linkedList.add(1);
+        linkedList.add(2);
+        linkedList.add(3);
+
+        linkedList.remove(0);
+
+        assertThat(linkedList.toString()).isEqualTo("[2, 3]");
+    }
+
+    @Test
+    public void deleteLast(){
+        MyLinkedList<Integer> linkedList = new MyLinkedList<>();
+        linkedList.add(1);
+        linkedList.add(2);
+        linkedList.add(3);
+
+        linkedList.remove(2);
+
+        assertThat(linkedList.toString()).isEqualTo("[1, 2]");
+    }
 }

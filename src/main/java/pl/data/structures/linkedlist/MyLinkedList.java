@@ -25,15 +25,23 @@ public class MyLinkedList<T> {
         lastItem.setNext(item);
     }
 
-    void add(T data, int position){
+    void add(T data, int index){
         Node<T> item = new Node<>(data);
 
         Node<T> prevItem = head;
-        for(int i=0; i<position; i++){
-            prevItem = head.getNext();
+        for(int i=0; i<index; i++){
+            prevItem = prevItem.getNext();
         }
         item.setNext(prevItem.getNext());
         prevItem.setNext(item);
+    }
+
+    void remove(int index){
+        Node<T> prevItem = head;
+        for(int i=0; i<index; i++){
+            prevItem = prevItem.getNext();
+        }
+        prevItem.setNext(prevItem.getNext().getNext());
     }
 
     @Override

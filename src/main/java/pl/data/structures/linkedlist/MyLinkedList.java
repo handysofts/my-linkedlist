@@ -11,7 +11,7 @@ public class MyLinkedList<T> {
 
     private Node<T> head;
 
-    MyLinkedList(){
+    MyLinkedList() {
         head = new Node<>();
     }
 
@@ -25,23 +25,39 @@ public class MyLinkedList<T> {
         lastItem.setNext(item);
     }
 
-    void add(T data, int index){
+    void add(T data, int index) {
         Node<T> item = new Node<>(data);
 
         Node<T> prevItem = head;
-        for(int i=0; i<index; i++){
+        for (int i = 0; i < index; i++) {
             prevItem = prevItem.getNext();
         }
         item.setNext(prevItem.getNext());
         prevItem.setNext(item);
     }
 
-    void remove(int index){
+    void remove(int index) {
         Node<T> prevItem = head;
-        for(int i=0; i<index; i++){
+        for (int i = 0; i < index; i++) {
             prevItem = prevItem.getNext();
         }
         prevItem.setNext(prevItem.getNext().getNext());
+    }
+
+    void reverse() {
+        if (isEmpty())
+            return;
+
+        Node<T> current = head.getNext();
+        Node<T> prev = null;
+        while (current.getNext() != null){
+            Node<T> next = current.getNext();
+            current.setNext(prev);
+            prev = current;
+            current = next;
+        }
+        current.setNext(prev);
+        head.setNext(current);
     }
 
     @Override
@@ -59,7 +75,7 @@ public class MyLinkedList<T> {
         }
         sb.append(item.getData());
 
-        return "["+sb.toString()+"]";
+        return "[" + sb.toString() + "]";
     }
 
     private boolean isEmpty() {

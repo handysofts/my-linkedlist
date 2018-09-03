@@ -100,4 +100,35 @@ public class MyLinkedListTest {
 
         assertThat(linkedList.toString()).isEqualTo("[1, 2]");
     }
+
+    @Test
+    public void reverse(){
+        MyLinkedList<Integer> linkedList = new MyLinkedList<>();
+        linkedList.add(1);
+        linkedList.add(2);
+        linkedList.add(3);
+
+        linkedList.reverse();
+
+        assertThat(linkedList.toString()).isEqualTo("[3, 2, 1]");
+    }
+
+    @Test
+    public void reverse_whenListEmpty(){
+        MyLinkedList<Integer> linkedList = new MyLinkedList<>();
+
+        linkedList.reverse();
+
+        assertThat(linkedList.toString()).isEqualTo("[]");
+    }
+
+    @Test
+    public void reverse_whenOneElement(){
+        MyLinkedList<Integer> linkedList = new MyLinkedList<>();
+        linkedList.add(1);
+
+        linkedList.reverse();
+
+        assertThat(linkedList.toString()).isEqualTo("[1]");
+    }
 }

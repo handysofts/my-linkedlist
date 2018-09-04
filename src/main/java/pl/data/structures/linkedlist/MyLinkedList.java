@@ -60,6 +60,24 @@ public class MyLinkedList<T> {
         head.setNext(current);
     }
 
+    void reverseByRecursive() {
+        if (isEmpty())
+            return;
+        reverseByRecursive(head.getNext());
+    }
+    private void reverseByRecursive(Node<T> n) {
+        if (n.getNext() == null){
+            head.setNext(n);
+            return;
+        }
+
+        reverseByRecursive(n.getNext());
+
+        Node<T> next = n.getNext();
+        n.setNext(null);
+        next.setNext(n);
+    }
+
     @Override
     public String toString() {
         if (isEmpty())

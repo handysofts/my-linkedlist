@@ -131,4 +131,35 @@ public class MyLinkedListTest {
 
         assertThat(linkedList.toString()).isEqualTo("[1]");
     }
+
+    @Test
+    public void reverseByRecursive(){
+        MyLinkedList<Integer> linkedList = new MyLinkedList<>();
+        linkedList.add(1);
+        linkedList.add(2);
+        linkedList.add(3);
+
+        linkedList.reverseByRecursive();
+
+        assertThat(linkedList.toString()).isEqualTo("[3, 2, 1]");
+    }
+
+    @Test
+    public void reverseByRecursive_whenListEmpty(){
+        MyLinkedList<Integer> linkedList = new MyLinkedList<>();
+
+        linkedList.reverseByRecursive();
+
+        assertThat(linkedList.toString()).isEqualTo("[]");
+    }
+
+    @Test
+    public void reverseByRecursive_whenOneElement(){
+        MyLinkedList<Integer> linkedList = new MyLinkedList<>();
+        linkedList.add(1);
+
+        linkedList.reverseByRecursive();
+
+        assertThat(linkedList.toString()).isEqualTo("[1]");
+    }
 }
